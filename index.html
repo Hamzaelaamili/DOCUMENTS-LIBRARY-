@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Hoceima Airport Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="overlay">
+            <h1>Présentation du Service équipements d'aérogare</h1>
+        </div>
+    </header>
+    
+    <main>
+        <section class="documents">
+            <h2>Documents</h2>
+            <div class="card-container">
+                <div class="card">
+                    <a href="équipements électrique.xlsx" target="_blank">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Liste des Équipements Électriques</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="équipements d'aerogare.xlsx" target="_blank">
+                        <i class="fas fa-plane-departure"></i>
+                        <h3>Liste des Équipements d'Aérogare</h3>
+                    </a>
+                </div>
+
+                <!-- Les Procédures card with dropdown -->
+                <div class="card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Les Procédures</h3>
+                    <div class="dropdown-content">
+                        <a href="Procédures électricité.html" target="_blank">Électricité</a>
+                        <a href="Procédures Aérogare.html" target="_blank">Aérogare</a>
+                    </div>
+                </div>
+
+                <!-- Les Enregistrements card with link to new page for Électricité -->
+                <div class="card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Les Enregistrements</h3>
+                    <div class="dropdown-content">
+                        <a href="electricity.html">Électricité</a>
+                        <a href="Aérogare.html" target="_blank">Aérogare</a>
+                    </div>
+                </div>
+
+                <!-- New card for PowerPoint file (Présentation) -->
+                <div class="card">
+                    <a href="Présentation du Service equipements aerogare.pptx" target="_blank">
+                        <i class="fas fa-file-powerpoint"></i>
+                        <h3>Présentation PowerPoint</h3>
+                    </a>
+                </div>
+
+                <!-- New card for Marchés (Tenders) -->
+                <div class="card">
+                    <a href="Marchés Ahu.pdf" target="_blank">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Marchés de Maintenance</h3>
+                    </a>
+                    
+                </div>
+                <!-- New card for Effectifs / Personnel Exerçant en Service -->
+<div class="card">
+    <a href="effectifs.PNG" target="_blank">
+        <i class="fas fa-users"></i>
+        <h3>Effectifs</h3>
+    </a>
+</div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Al Hoceima Airport | 
+            <a href="https://hamzaelaamili.github.io/airportalhoceima/" target="_blank" class="footer-link">Visit Official Airport Website</a>
+        </p>
+    </footer>
+    
+</body>
+<script>
+    // Wait for the DOM to load before executing the script
+    document.addEventListener("DOMContentLoaded", function() {
+        // Toggle dropdown visibility on card click
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Toggle the 'open' class to show/hide the dropdown
+                this.classList.toggle('open');
+            });
+        });
+    });
+</script>
+
+</html>
