@@ -15,6 +15,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     color: white;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Header styling */
@@ -46,6 +47,8 @@ main {
     background-color: rgba(255, 255, 255, 0.7); /* Lighter background */
     border-radius: 15px;
     margin: 40px;
+    position: relative; /* Create a new stacking context */
+    z-index: 1;
 }
 
 .documents {
@@ -67,6 +70,8 @@ main {
     justify-content: center;
     gap: 20px;
     padding-top: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Individual card styling */
@@ -80,6 +85,7 @@ main {
     text-align: center;
     cursor: pointer;
     position: relative;
+    z-index: 3; /* Ensure it’s above main container */
 }
 
 .card:hover {
@@ -104,32 +110,7 @@ main {
     text-decoration: none;
 }
 
-/* Footer styling */
-footer {
-    text-align: center;
-    background-color: #004080;
-    color: white;
-    padding: 20px;
-    opacity: 0.9;
-    font-size: 1.1em;
-}
-
-footer a {
-    color: #f3f3f3;
-    text-decoration: underline;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #ffcc00; /* Yellow color when hovered */
-}
-
 /* Dropdown styling for procedures */
-.card {
-    position: relative;
-}
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -140,7 +121,7 @@ footer a:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     overflow: hidden;
-    z-index: 1;
+    z-index: 9999; /* Ensure dropdown is above everything */
     width: 180px;
 }
 
@@ -156,54 +137,8 @@ footer a:hover {
     background-color: #f1f1f1;
 }
 
-/* Make dropdown toggleable on mobile */
+/* Show dropdown on click */
 .card.open .dropdown-content {
-    display: block;
-}
-
-/* Sub-dropdown styling for Électricité */
-.electricite-submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    width: 250px;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 2;
-}
-
-.electricite-submenu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.electricite-submenu li {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-.electricite-submenu li:last-child {
-    border-bottom: none;
-}
-
-.electricite-submenu a {
-    display: block;
-    text-decoration: none;
-    color: #004080;
-    background: white;
-}
-
-.electricite-submenu a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Show sub-menu when clicked */
-.electricite-submenu.show {
     display: block;
 }
 
@@ -228,18 +163,6 @@ footer a:hover {
     }
 
     /* Mobile Dropdown adjustments */
-    .dropdown-toggle {
-        cursor: pointer;
-        padding: 10px;
-        background-color: #3498db;
-        color: white;
-        text-align: center;
-        border-radius: 4px;
-        width: 100%;
-        font-weight: bold;
-        margin-top: 10px;
-    }
-
     .dropdown-content {
         position: static;
         display: none; /* Start hidden */
@@ -250,4 +173,59 @@ footer a:hover {
     .card.open .dropdown-content {
         display: block;
     }
+}
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: #004080;
+    margin-bottom: 15px;
+}
+
+.modal-content a {
+    display: block;
+    color: #004080;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.modal-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

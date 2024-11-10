@@ -86,18 +86,70 @@
     </footer>
     
 </body>
-<script>
-    // Wait for the DOM to load before executing the script
-    document.addEventListener("DOMContentLoaded", function() {
-        // Toggle dropdown visibility on card click
-        const cards = document.querySelectorAll('.card');
+<!-- Modal structure -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <div id="modal-links"></div>
+    </div>
+</div>
 
-        cards.forEach(card => {
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalLinks = document.getElementById("modal-links");
+        const closeModal = document.querySelector(".close");
+
+        // Define content for each modal
+        const content = {
+            procedures: [
+                { text: "Électricité", href: "Procédures électricité.html" },
+                { text: "Aérogare", href: "Procédures Aérogare.html" }
+            ],
+            enregistrements: [
+                { text: "Électricité", href: "electricity.html" },
+                { text: "Aérogare", href: "Aérogare.html" }
+            ]
+        };
+
+        // Open modal with content based on selected card
+        document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('click', function() {
-                // Toggle the 'open' class to show/hide the dropdown
-                this.classList.toggle('open');
+                if (card.querySelector("h3").innerText === "Les Procédures") {
+                    showModal("Les Procédures", content.procedures);
+                } else if (card.querySelector("h3").innerText === "Les Enregistrements") {
+                    showModal("Les Enregistrements", content.enregistrements);
+                }
             });
         });
+
+        // Function to show modal with specified title and links
+        function showModal(title, links) {
+            modalTitle.innerText = title;
+            modalLinks.innerHTML = '';
+            links.forEach(link => {
+                const a = document.createElement("a");
+                a.href = link.href;
+                a.target = "_blank";
+                a.innerText = link.text;
+                modalLinks.appendChild(a);
+            });
+            modal.style.display = "block";
+        }
+
+        // Close modal when 'x' is clicked
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close modal when clicking outside the modal content
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     });
 </script>
 
